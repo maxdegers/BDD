@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Eleve Option</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+
+</head>
+
+<body onload="myFunction()">
+    <div class="box">
+
+        <h1>OBTENIR LA LISTE DES ELEVES SUIVANT UNE OPTION</h1>
+        <br />
+        <br />
+        <br />
+        <form action="http://localhost:5000/eleve-option" method="post">
+            <label>Option</label> : <input type="text" name="option" />
+            <input type="submit" value="Envoyer" class="text" />
+        </form>
+
+        <a class="menu" href="/">MENU</a>
+    </div>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>ELEVES SUIVANT L'OPTION {{option}}</p>
+            <p>{{resp}}</p>
+        </div>
+
+    </div>
+</body>
+<script>
+    var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+    var myFunction = function () {
+        if ('{{success}}') {
+            modal.style.display = "block";
+            console.log('{{resp}}')
+        }
+
+    }
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+
+        }
+    }
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+</script>
+
+</html>

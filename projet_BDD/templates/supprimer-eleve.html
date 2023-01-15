@@ -1,0 +1,53 @@
+    <!DOCTYPE html>
+    <html>
+    
+    <head>
+        <title>Supprimer Eleve</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    
+    </head>
+    
+    <body onload="myFunction()">
+        <div class="box">
+            <h1>SUPPRIMER LES DONNEES D'UN ELEVE</h1>
+            <br/>
+            <br/>
+            <br/>
+            <form action="http://localhost:5000/supprimer-eleve" method="post" >
+                <label>Id_Eleve</label> : <input type="text" name="id" />
+                <input type="submit" value="Envoyer" class="text" />
+            </form>
+
+            <a class="menu" href="/">MENU</a>
+        </div>
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>SUPPRIMER ELEVE REUSSIE</p>
+                <p>L'élève d'identifiant {{id}} a bien été suprimer.</p>
+            </div>
+    
+        </div>
+    </body>
+    <script>
+        var modal = document.getElementById("myModal");
+        var span = document.getElementsByClassName("close")[0];
+        var myFunction = function () {
+            if ('{{success}}') {
+                modal.style.display = "block";
+            }
+    
+        }
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+    
+            }
+        }
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+    </script>
+    
+    </html>

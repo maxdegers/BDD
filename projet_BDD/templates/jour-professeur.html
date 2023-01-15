@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mettre A Jour</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+
+</head>
+
+<body onload="myFunction()">
+    <div class="box">
+        <h1>METTRE A JOUR LES DONNEES D'UN PROFESSEUR</h1>
+        <br />
+        <br />
+        <br />
+        <form action="http://localhost:5000/jour-professeur" method="post">
+            <label>Id Professeur</label> : <input type="text" name="id" />
+            <label>Nom</label> : <input type="text" name="nom" />
+            <label>Prénom</label> : <input type="text" name="prenom" />            
+            <input type="submit" value="Envoyer" class="text" />
+        </form>
+
+        <a class="menu" href="/">MENU</a>
+    </div>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>METTRE A JOUR PROFESSEUR REALISEE</p>
+            <p>Le Professeur {{nom}} {{prenom}}  avec l'identifiant {{id}} a bien été mis a jour.</p>
+        </div>
+
+    </div>
+</body>
+<script>
+    var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+    var myFunction = function () {
+        if ('{{success}}') {
+            modal.style.display = "block";
+        }
+
+    }
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+
+        }
+    }
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+</script>
+
+</html>

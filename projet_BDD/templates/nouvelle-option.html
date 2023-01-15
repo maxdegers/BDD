@@ -1,0 +1,56 @@
+    <!DOCTYPE html>
+    <html>
+    
+    <head>
+        <title>Nouvelle Option</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    
+    </head>
+    
+    <body onload="myFunction()">
+        <div class="box">
+            <h1>ENREGISTRER LES DONNEES D'UNE NOUVELLE OPTION</h1>
+            <br/>
+            <br/>
+            <br/>
+            <form action="http://localhost:5000/nouvelle-option" method="post" >
+                <label>Id option</label> : <input type="text" name="id_o" />
+                <label>Matiere</label> : <input type="text" name="matiere" />
+                <label>Id professeur</label> : <input type="text" name="id_p" />
+                <input type="submit" value="Envoyer" class="text" />
+            </form>
+    
+            <a class="menu" href="/">MENU</a>
+        </div>
+        <div id="myModal" class="modal">
+    
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>SAISIE OPTION VALIDE</p>
+                <p>L'option de {{matiere}} et d'identifiant {{id_o}} a bien ajouté avec le professeur d'identifiant {{id_p}}</p>
+            </div>
+    
+        </div>
+    </body>
+    <script>
+        var modal = document.getElementById("myModal");
+        var span = document.getElementsByClassName("close")[0];
+        var myFunction = function () {
+            if ('{{success}}') {
+                modal.style.display = "block";
+            }
+    
+        }
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+    
+            }
+        }
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+    </script>
+    
+    </html>
